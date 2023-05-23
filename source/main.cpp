@@ -88,7 +88,7 @@ int main(int argc, char *argv[]) {
     fout << delimiter_line << endl;
     fout << "Parsed quadruples: " << endl;
     for (const auto &quad: intermediateCodeGenerator.get_quadruples()) {
-      fout << "( " << quad.op << ", "
+      fout << "( " << (quad.op == '=' ? ":=" : string(1, quad.op)) << ", "
            << intermediate_code_generator::quadruple::item2str(quad.operand1)
            << ", "
            << intermediate_code_generator::quadruple::item2str(quad.operand2)
@@ -99,7 +99,7 @@ int main(int argc, char *argv[]) {
     fout << delimiter_line << endl;
     fout << "Optimized quadruples: " << endl;
     for (auto &quad: dagOptimizer.get_optimized()) {
-      fout << "( " << quad.op << ", "
+      fout << "( " << (quad.op == '=' ? ":=" : string(1, quad.op)) << ", "
            << intermediate_code_generator::quadruple::item2str(quad.operand1)
            << ", "
            << intermediate_code_generator::quadruple::item2str(quad.operand2)
