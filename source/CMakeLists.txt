@@ -5,6 +5,14 @@ set(CMAKE_CXX_STANDARD 11)
 
 set(exe_name pl0_compiler)
 
+if(CMAKE_SYSTEM_NAME STREQUAL "Linux")
+  # Set the C++ compiler flags for profiling
+  set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -pg")
+
+  # Set the executable linker flags for profiling
+  set(CMAKE_EXE_LINKER_FLAGS "${CMAKE_EXE_LINKER_FLAGS} -pg")
+endif()
+
 set(SOURCE_LIST
     lexemes.h
     regex_pattern.h
